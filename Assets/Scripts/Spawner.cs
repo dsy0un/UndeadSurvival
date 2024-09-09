@@ -17,6 +17,8 @@ public class Spawner : MonoBehaviour
             {
                 GameManager.Instance.pool.Get(0);
             }
+
+            yield return null;
         }
     }
 }
