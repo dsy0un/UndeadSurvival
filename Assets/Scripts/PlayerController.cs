@@ -23,15 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(PlayerMove());
-    }
-
-    private void FixedUpdate()
-    {
         StartCoroutine(PhysicsPlayerMove());
-    }
-
-    private void LateUpdate()
-    {
         StartCoroutine(PlayerTurn());
     }
 
@@ -56,10 +48,13 @@ public class PlayerController : MonoBehaviour
     /// <returns>Null</returns>
     IEnumerator PhysicsPlayerMove()
     {
-        Vector2 nextVec = inputVec.normalized * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + nextVec);
+        while (true)
+        {
+            Vector2 nextVec = inputVec.normalized * moveSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + nextVec);
 
-        yield return null;
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     /// <summary>
@@ -68,10 +63,13 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     IEnumerator PlayerTurn()
     {
-        anim.SetFloat("Speed", inputVec.magnitude);
+        while (true)
+        {
+            anim.SetFloat("Speed", inputVec.magnitude);
 
-        if (inputVec.x != 0) sr.flipX = inputVec.x < 0;
+            if (inputVec.x != 0) sr.flipX = inputVec.x < 0;
 
-        yield return null;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

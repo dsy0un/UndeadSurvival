@@ -14,13 +14,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [HideInInspector]
     public PlayerController player;
+    public PoolManager pool;
 
     private void Awake()
     {
         instance = this;
+
+        player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        pool = FindObjectOfType(typeof(PoolManager)) as PoolManager;
     }
-
-
 }
