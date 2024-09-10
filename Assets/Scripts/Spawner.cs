@@ -12,9 +12,9 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     float radius = 10; // 원의 반지름
     [SerializeField]
+    int level; // 적의 데이터 변경 주기
+    [SerializeField]
     float spawnInterval = 4; // 적의 스폰 주기
-
-    int level = 0;
 
     private void Start()
     {
@@ -25,21 +25,20 @@ public class Spawner : MonoBehaviour
     {
         spawnCount = Mathf.Clamp(spawnCount, 3, 30);
         spawnInterval = Mathf.Clamp(spawnInterval, 0.2f, 4f);
-        level = Mathf.FloorToInt(10f / GameManager.Instance.GameTime);
+        if (GameManager.Instance.GameTime % 10 == 0) level++;
     }
 
     IEnumerator SpawnEnemy()
     {
         while (true)
         {
-            yield return new WaitForSeconds(spawnInterval); // 한 사이클이 돌면 0.1 감소 (적이 변경될 때(주기 아님)마다 1분임)
-
             if (level >= spawnData.Length)
             {
+                spawnInterval -= 0.1f;
                 level = 0;
             }
 
-            Debug.Log(level);
+            yield return new WaitForSeconds(spawnInterval); // 한 사이클이 돌면 0.1 감소 (적이 변경되는 시간(주기X)은 1분)
 
             float angleStep = 360f / spawnCount;
             float angle = 0f;
