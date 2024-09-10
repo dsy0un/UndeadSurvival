@@ -14,8 +14,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [HideInInspector]
     public PlayerController player;
+    [HideInInspector]
     public PoolManager pool;
+
+    float gameTime;
+    public float GameTime
+    {
+        get { return gameTime; }
+    }
 
     private void Awake()
     {
@@ -23,5 +31,10 @@ public class GameManager : MonoBehaviour
 
         player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         pool = FindObjectOfType(typeof(PoolManager)) as PoolManager;
+    }
+
+    private void Update()
+    {
+        gameTime += Time.deltaTime;
     }
 }

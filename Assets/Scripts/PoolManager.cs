@@ -7,7 +7,8 @@ public class PoolManager : MonoBehaviour
     [SerializeField]
     GameObject[] prefabs;
 
-    List<GameObject>[] pools;
+    [HideInInspector]
+    public List<GameObject>[] pools;
 
     private void Awake()
     {

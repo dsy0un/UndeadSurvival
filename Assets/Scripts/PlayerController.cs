@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [HideInInspector]
-    public Vector2 inputVec;
     [SerializeField]
     float moveSpeed;
+
+    Vector2 inputVec;
 
     Rigidbody2D rb;
     SpriteRenderer sr;
