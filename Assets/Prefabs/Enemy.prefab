@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8258297729349719662}
   - component: {fileID: 8258297729349719663}
   - component: {fileID: 8258297729349719660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -161,7 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  health: 0
   maxHealth: 0
   rac:
   - {fileID: 9100000, guid: f2855d618fc8d9c499189d3f39b9cbbc, type: 2}
@@ -191,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8258297729776369114}
   - component: {fileID: 8258297729776369115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4557,6 +4557,7 @@ MonoBehaviour:
     moveSpeed: 2.5
   spawnCount: 3
   radius: 10
+  level: 0
   spawnInterval: 4
 --- !u!1 &404240112
 GameObject:
@@ -4604,6 +4605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 8258297729349719669, guid: ebbfe922fa929fd439470042c68e7ddb, type: 3}
+  - {fileID: 4841202847191409597, guid: b7ab09876e082a943ad1f15d31c2c31b, type: 3}
 --- !u!1 &429511372
 GameObject:
   m_ObjectHideFlags: 0
@@ -13492,6 +13494,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1485748220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485748221}
+  - component: {fileID: 1485748222}
+  m_Layer: 0
+  m_Name: Weapon 0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1485748221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485748220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1704810759}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1485748222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485748220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633fcd8b0ee1800499c1a68f1e9b5c14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  prefabId: 1
+  count: 5
+  damage: 11
+  rotateSpeed: 0
 --- !u!1 &1704810757
 GameObject:
   m_ObjectHideFlags: 0
@@ -13580,6 +13631,7 @@ Transform:
   - {fileID: 144114431}
   - {fileID: 2035159061}
   - {fileID: 373788198}
+  - {fileID: 1485748221}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -35,42 +35,40 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        if (isLive) 
-        {
-            StartCoroutine(PhysicsEnemyMove());
-            StartCoroutine(EnemyTurn());
-        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        PhysicsEnemyMove();
+    }
+
+    private void LateUpdate()
+    {
+        EnemyTurn();
     }
 
     /// <summary>
     /// 적이 플레이어를 따라오도록 만든 함수
     /// </summary>
     /// <returns></returns>
-    IEnumerator PhysicsEnemyMove()
+    void PhysicsEnemyMove()
     {
-        while (true)
-        {
-            Vector2 dirVec = target.position - rb.position;
-            Vector2 nextVec = dirVec.normalized * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + nextVec);
-            rb.velocity = Vector2.zero; // 물리 속도가 이동에 영향을 주지 않도록 함
-
-            yield return new WaitForFixedUpdate();
-        }
+        if (!isLive) return;
+        Vector2 dirVec = target.position - rb.position;
+        Vector2 nextVec = dirVec.normalized * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + nextVec);
+        rb.velocity = Vector2.zero; // 물리 속도가 이동에 영향을 주지 않도록 함
     }
 
     /// <summary>
     /// 적이 고개를 돌리는 함수
     /// </summary>
     /// <returns></returns>
-    IEnumerator EnemyTurn()
+    void EnemyTurn()
     {
-        while (true)
-        {
-            sr.flipX = target.position.x < rb.position.x;
-
-            yield return new WaitForEndOfFrame();
-        }
+        if (!isLive) return;
+        sr.flipX = target.position.x < rb.position.x;
     }
 
     public void Init(SpawnData data)
@@ -79,5 +77,26 @@ public class EnemyController : MonoBehaviour
         moveSpeed = data.moveSpeed;
         maxHealth = data.health;
         health = maxHealth;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Bullet")) return;
+
+        health -= collision.GetComponent<Bullet>().Damage;
+
+        if (health > 0)
+        {
+
+        }
+        else
+        {
+            Dead();
+        }
+    }
+
+    void Dead()
+    {
+        gameObject.SetActive(false);
     }
 }
